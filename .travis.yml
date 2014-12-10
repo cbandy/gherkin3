@@ -21,13 +21,3 @@ before_install:
   - "if [ \"$DMG\" = \"1\" ]; then sudo installer -pkg \"/Volumes/Mono Framework MDK ${MONO_VERSION}/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg\" -target /; fi"
 
 script: "make"
-
-branches:
-  only:
-    - master
-
-notifications:
-  email:
-    - cukes-devs@googlegroups.com
-  irc:
-    - "irc.freenode.org#cucumber"
