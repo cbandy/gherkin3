@@ -1,6 +1,4 @@
-# https://github.com/travis-ci/travis-ci/issues/649
-# https://github.com/exKAZUu/TravisTemplateForCSharpMono/blob/master/.travis.yml
-language: objective-c
+language: csharp
 
 rvm:
   - 2.0.0
@@ -9,16 +7,8 @@ rvm:
 env:
   global:
     - EnableNuGetPackageRestore=true
-  matrix:
-    - MONO_VERSION="3.2.7" DMG=0
-    - MONO_VERSION="3.0.12" DMG=1
 
 before_install:
-  - "if [ \"$DMG\" = \"0\" ]; then wget \"http://download.xamarin.com/MonoFrameworkMDK/Macx86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg\"; fi"
-  - "if [ \"$DMG\" = \"0\" ]; then sudo installer -pkg \"MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg\" -target /; fi"
-  - "if [ \"$DMG\" = \"1\" ]; then wget \"http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.dmg\"; fi"
-  - "if [ \"$DMG\" = \"1\" ]; then hdid \"MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.dmg\"; fi"
-  - "if [ \"$DMG\" = \"1\" ]; then sudo installer -pkg \"/Volumes/Mono Framework MDK ${MONO_VERSION}/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg\" -target /; fi"
   # https://github.com/travis-ci/travis-ci/issues/2839
   - export JAVA_HOME="$(/usr/libexec/java_home)"
 
